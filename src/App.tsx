@@ -1,8 +1,7 @@
-import React from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './App.less';
 
-function App() {
+function App(props: any) {
   return (
     <div className="App">
       <header className="App-header">
@@ -19,6 +18,7 @@ function App() {
           Learn React 18
         </a>
       </header>
+      {/* <Pagination defaultCurrent={1} total={50} showSizeChanger /> */}
     </div>
   );
 }
