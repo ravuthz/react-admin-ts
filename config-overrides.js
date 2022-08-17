@@ -1,4 +1,4 @@
-const { override } = require("customize-cra");
+const { override, fixBabelImports, overrideDevServer } = require("customize-cra");
 const addLessLoader = require("customize-cra-less-loader");
 
 const lessLoaderConfig = {
@@ -10,9 +10,26 @@ const lessLoaderConfig = {
   },
   lessLoaderOptions: {
     lessOptions: {
-      strictMath: true,
+      strictMath: false,
+      javascriptEnabled: true,
+      importLoaders: true,
+      // modifyVars: {
+      //   "@primary-color": "#1DA57A",
+      //   "@link-color": "@primary-color",
+      // },
     },
   },
 };
 
-module.exports = override(addLessLoader(lessLoaderConfig));
+// module.exports = override(addLessLoader(lessLoaderConfig));
+module.exports = {
+  webpack: override(
+      fixBabelImports('import', {
+        libraryName: 'antd',
+        libraryDirectory: 'es',
+        style: 'css',
+      }),
+      addLessLoader(lessLoaderConfig)
+  ),
+  devServer: overrideDevServer(),
+}

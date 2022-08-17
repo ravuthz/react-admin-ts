@@ -2,6 +2,7 @@
 import {create, act} from 'react-test-renderer';
 
 import App from './App';
+import React from "react";
 
 test('renders learn react link', () => {
   let testRenderer: any;
